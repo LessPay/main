@@ -1,0 +1,405 @@
+<div id="overview_video_wrapper">
+    <video autoplay="autoplay" loop="loop" id="overview_video" width="100%" poster="/media/poster.png" overview-video>
+        <source src="/media/OUTPUT_HD.webm" type="video/webm">      
+        <source src="/media/OUTPUT_HD_new.mp4" type="video/mp4">
+
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="dot"></div>
+</div>
+
+<div id="spacer" class="" ng-controller="fastRegCtrl" screen-height>
+    <div class="caption">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="info text-center">
+                    <stop-video></stop-video>
+
+
+                    <h2 class="slogan">safe and easy way to make payments</h2>
+                    <h1>MADE FOR PEOPLE</h1>
+
+                    <div class="col-md-6 col-md-offset-3">
+                        <form ng-submit="send()" >
+
+                            <div class="form-group">
+
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="form-control" placeholder="Email" ng-model="data.email">
+
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary btn-lg text bold "
+                                                ng-disabled="!canSend"
+                                                popover='By clicking this button, you agree to our Terms and that you have read our Data Use Policy.'
+                                                popover-trigger="mouseenter"
+                                                popover-placement="right"
+                                                popover-append-to-body="1"
+                                            >
+                                            FREE REGISTRATION
+                                        </button>
+                                    </div>
+
+
+
+                                </div>
+                                <span class="help-block text white shadow" ng-bind-html="error"> </span>
+
+                            </div>
+
+
+
+                        </form>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="help">
+                            You are business owner? <a href="" ui-sref="store_registration" class="text bold">Open a business account</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<section id="features" class="region white">
+
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-xs-4">
+                <ul class="nav nav-pills">
+                    <li>
+                        <a href="" tooltip="Help"  ui-sref="content({ 'layout' : 'page', 'path' : 'terms/help.html' })"><i class="fa fa-question-circle fa-fw fa-2x"></i> </a> 
+                    </li>
+                    <li>
+                        <a href="" ui-sref="content({ 'layout' : 'terms', 'path' : 'terms/terms.html' })">TERMS</a>
+                    </li>
+                    <li>
+                        <a href="" ui-sref="content({ 'layout' : 'terms', 'path' : 'terms/data_use_policy.html' })">DATA USE POLICY</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="text-center col-xs-4">
+                <a href="#start_tour" id="gettour" class="" du-smooth-scroll>
+                    <i class="fa fa-arrow-circle-o-down fa-4x"></i>
+                    <!-- <span class="help-text">GET&nbsp;THE&nbsp;TOUR</span>                           -->
+                </a>
+            </div>
+            <div class="col-xs-4 text-right padding-top">
+                <a href="" class="pull-right "> <span class="icon icon-usa"></span> </a>
+                <!--
+                <a href="" class="pull-right margin-right"> <span class="icon icon-ukr"></span> </a>
+                <a href="" class="pull-right margin-right"> <span class="icon icon-ch"></span> </a>
+                <a href="" class="pull-right margin-right"> <span class="icon icon-rus"></span> </a>
+                -->
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+<span id="start_tour"></span>
+
+<section id="" class="region blue full-heightd">
+    <div class="container">
+        <div class="row">
+            <h1 class="text white">LESSPAY works worldwide AND no limits</h1>
+
+            <div class="col-md-4">
+                <strong>It's great when everything just clicks.</strong>
+                <p>Start accepting cryptocyrrency with the simple turn of our key. We've figured it all out for you, from sales to figures. Stop running, it runs itself.</p>
+
+                <br>
+                <strong>Bitcoin brake any limit.</strong>
+                <p></p>
+
+                <br>
+
+                <img src="/images/bitcoin_litecoin.min.png" alt="" width="200px" class="margin2x-bottom">
+                <br>
+            </div>
+            <div class="col-md-8">
+
+                <img src="/images/map.min.png" alt="" width="100%" class="margin2x-bottom">
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+
+
+<section id="" class="region gray full-heightd">
+    <div class="container">
+        <div class="row">
+            <h1>CONVENIENT PRIVATE OFFICE</h1>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <br>
+                <img src="/images/ipad_cr.min.png"  alt="" width="100%">
+                <br>
+            </div>
+            <div class="col-md-4">
+
+                <strong>Balance</strong>
+                <p class="margin2x-bottom">Your account balance is shown as informative as possible in all currencies.</p>
+
+
+                <strong>Payment templates</strong>
+                <p class="margin2x-bottom">Create templates of frequently payments made and always have quick access to them</p>
+
+
+
+                <strong>Statistics</strong>
+                <p class="margin2x-bottom">Get a detailed report about spending</p>
+
+
+
+
+                <strong>History</strong>
+                <p class="margin2x-bottom">All transactions at a glance: create templates, add tags         </p>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<section id="about" class="region darkest full-heightd">
+    <div class="container">
+
+        <div class="row">
+
+            <h1>Pay easy and profitably</h1>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-percent fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    0% commission on most of operations
+                </div>
+
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-shield fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    Improved security, with OTP and other features
+                </div>
+
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-clock-o fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    <span class="oneline">Online cash deposit</span>
+
+                </div>
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-cube fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    <span class="oneline">Online cash deposit</span>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-eye fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    0% commission on most of operations
+                </div>
+
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-money fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    Improved security, with OTP and other features
+                </div>
+
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-clock-o fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    <span class="oneline">Online cash deposit</span>
+
+                </div>
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-clock-o fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    <span class="oneline">Online cash deposit</span>
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="col-md-4">
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-support fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    <span class="oneline">Online support</span>
+
+                </div>
+
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-shield fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    Improved security, with OTP and other features
+                </div>
+
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-calendar fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    <span class="oneline">Planning of payments</span>
+
+                </div>
+                <div class="feature">
+
+                    <div class="pull-left ">
+                        <i class="fa fa-bar-chart-o fa-3x margin-right text ugreen fa-fw"></i>
+                    </div>
+                    <span class="oneline">Expenditure statistics (soon)</span>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section id="" class="region full-heightd white">
+    <div class="container">
+        <div class="row">
+            <h1>Easy integrations </h1>
+
+            <div class="col-xs-6">
+                <strong>It's great when everything just clicks.</strong>
+                <p>Start accepting cryptocyrrency with the simple turn of our key. We've figured it all out for you, from sales to figures. Stop running, it runs itself.</p>
+
+                <br>
+
+                <a href="" class="btn btn-success">Get paid on your website </a> &nbsp;
+                    or &nbsp;
+                <a href="" class="btn btn-success">Email an invoice</a>
+            </div>
+            <div class="col-xs-5 col-xs-offset-1">
+                <img src="/images/map.png" alt="" width="100%" class="margin2x-bottom">
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+
+<section id="about" class="region gray full-heightd">
+    <div class="container">
+        <div class="row">
+            <h1>Pay without registration</h1>
+
+            <div class="col-xs-12">
+                <form action="">
+                    <div class="form-group">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control">
+                            <div class="input-group-btn">
+                                <a href="" class="btn  btn-success-bd">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+
+<section id="about" class="region green full-heightd">
+    <div class="container">
+        <div class="row">
+            <h1>Thousands of Satisfied Online Merchants</h1>
+
+            <div class="col-xs-12">
+                <p>
+                Thousands of sellers use LessPay due to its unparalleled customer service.  From integration to your millionth sale, a personal account manager and 24/7 support team are available when you need them.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>

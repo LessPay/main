@@ -1,0 +1,155 @@
+<legend>
+	Manage vouchers
+	<div class="pull-right">
+
+		<div class="btn-group btn-group-sm">
+			<a class="btn btn-primary" href>12</a> 
+			<a class="btn btn-primary" href>24</a>
+		</div>
+		
+	</div>
+</legend>
+
+<form action>
+	<div class="row">
+		<div class="col-md-5">
+			<p class="input-group">
+				<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dfrom" is-open="openedFrom" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="open($event, 'From')"><i class="glyphicon glyphicon-calendar"></i></button>
+				</span>
+			</p>
+		</div>
+
+		<div class="col-md-5">
+			<p class="input-group">
+				<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dto" is-open="openedTo" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="open($event, 'To')"><i class="glyphicon glyphicon-calendar"></i></button>
+				</span>
+			</p>
+		</div>
+
+		<div class="col-md-2">
+			<div class="form-group">
+				<a href class="btn btn-block btn-default">Apply</a>
+			</div>
+		</div>
+
+
+	</div>
+	
+</form>
+
+<hr>
+
+<div class="row">
+
+	<div class="col-md-6" ng-repeat="voucher in vouchers">
+		<div class="panel panel-default" ng-class="{ 'panel-info' : !voucher.status, 'panel-default' : !voucher.status === 'a'  }">
+			<!-- <div class="panel-heading">
+				<a href ng-click="voucher.activated=true"></a>
+
+				<a href="" class="pull-right">
+					<i class="fa fa-arrow-circle-right"></i>
+					
+				</a>
+				<span ng-bind="voucher.id"></span>
+			</div>
+			-->
+			<div class="panel-body">
+					<!-- <i class="fa fa-credit-card pull-left fa-5x" ></i> -->
+					<qrcode ng-if="!voucher.status" version="5" error-correction-level="2" size="107" data="LPVOUCHER: {{voucher.id}}" class="pull-left margin-right"></qrcode>
+
+					<span class="pull-right">
+							<span ng-if="!voucher.status">
+								<a href tooltip="SEND" tooltip-placement="right" ng-click="sendWindow(voucher.id)"><i class="fa fa-arrow-circle-right"></i></a> <br>
+								<a href tooltip="QR Code" tooltip-placement="right"><i class="fa fa-qrcode"></i></a><br>
+								<a href tooltip="Print your voucher" tooltip-placement="right"><i class="fa fa-print"></i></a><br>
+								<a href tooltip="REJECT" tooltip-placement="right" ng-click="reject(voucher.id)"><i class="fa fa-unlink"></i></a>
+							</span>
+							<i class="fa fa-check" ng-if="voucher.status"></i>
+						</span>
+					<div class="pull-left">
+						<div>
+							<strong ng-bind="voucher.id"></strong>
+						</div>
+						<div>
+							<span>{{ voucher.amount | number:8 }}</span> <span ng-bind="voucher.code"></span>
+						</div>
+
+						<hr>
+
+						<div ng-if="!voucher.status">
+							<strong>Expirtaion date: </strong> {{ voucher.expiration | date:'shortDate'}}
+							<!-- Если активирован - дата активации -->
+						</div>
+
+						<div ng-if="voucher.status === 'a'">
+							<strong>Activated: </strong> {{ voucher.activation | date:'shortDate'}}
+							<!-- Если активирован - дата активации -->
+						</div>
+
+
+					</div>
+				
+					
+
+					<!--
+					<input type="text" class="form-control input-sm" value="https://lesspay.cc/vouchers/activate/{{ voucher.id }}">
+					-->
+
+
+					
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+	
+
+
+
+<div class="text-center">
+	<pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize"  boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+</div>
+
+
+<script type="text/ng-template" id="/template/vouchers/send">
+    <div class="modal-header">
+        <h3 class="modal-title">Send voucher</h3>
+    </div>
+    <div class="panel-body">
+	    <form action ng-submit="send()">
+	    	<div class="input-group" >
+				<input type="text" class="form-control" placeholder="To: Jabber, ICQ or E-mail address" ng-model="data.address">
+				
+				<div class="input-group-btn" dropdown>
+
+					<button type="button" class="btn btn-default dropdown-toggle" tabindex="-1">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+						<span> {{ methods[data.method] }}</span>
+					</button>
+
+					<ul class="dropdown-menu dropdown-menu-right" role="menu">
+						<li ng-repeat="(key, val) in methods"><a href ng-click="data.method=key" ng-bind="val"></a></li>
+					</ul>
+				</div>
+
+
+			</div> 
+
+
+
+	    </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="send()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

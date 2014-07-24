@@ -1,0 +1,116 @@
+<form action class="form-horizontal" ng-submit="buyVoucher()">
+	<!-- <legend>Buy voucher</legend> -->
+	<h2>Buy voucher</h2>
+	<hr>
+
+	<div class="row">
+		<div class="col-md-8">		
+
+			<div class="form-group" >
+                <label for="method" class="col-sm-3 control-label">Amount</label>
+                <div class="col-sm-9">
+                    <div class="input-group amount-field">
+                        <input type="text" class="form-control amount" placeholder="0" ng-model="data.amount">
+                        <input type="text" class="form-control mantiss" placeholder="00" ng-model="data.mantissa">
+                        
+                        <div class="input-group-btn" dropdown>
+                            <button type="button" class="btn btn-default dropdown-toggle" >{{ data.from_account.code }} <span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                                <li ng-repeat="account in wallet.data track by account.id">
+                                    <a href ng-click="data.from_account=account">
+                                        {{ account.code }} {{ account.balance }} {{ account.current_name }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div class="help-block">Fee: 0.00, Limit: </div>
+                </div>
+            </div>
+
+			
+
+
+
+
+
+
+
+
+			<div class="form-group">
+				<label for="comment" class="col-sm-3 control-label">Comment</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" placeholder="Comment" ng-model="data.comment">
+				</div>
+			</div>
+            
+            <div class="form-group">
+            	<div class="col-md-3 col-sm-offset-3">
+                    <button class="btn btn-info  btn-block" ng-click="create()">
+                        <strong>BUY</strong>
+                    </button>
+
+
+                </div>
+                <div class="col-md-6">
+                    <div class="checkbox" ng-hide="data.send">
+                            <label >
+                                <input type="checkbox" ng-model="data.send">
+                                Send
+                            </label>
+                        </div>
+
+                        <div class="input-group" ng-if="data.send">
+                            <span class="input-group-addon">
+                                <input type="checkbox"  ng-model="data.send">
+                            </span>
+                            <input type="text" class="form-control" placeholder="To: Jabber, ICQ or E-mail address" ng-model="data.address">
+                            
+                            <div class="input-group-btn" dropdown>
+
+                                <button type="button" class="btn btn-default dropdown-toggle" tabindex="-1">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                    <span> {{ methods[data.method] }}</span>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <li ng-repeat="(key, val) in methods"><a href ng-click="data.method=key" ng-bind="val"></a></li>
+                                </ul>
+                            </div>
+
+
+                        </div> 
+                </div>
+            </div>
+
+
+		</div>
+		<div class="col-md-4">
+
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					Info
+				</div>
+				<div class="panel-body">
+					<p class="">
+						Send voucher by email, jabber or icq. Recipient will receive message with a unique link to the activation of voucher. <u>If the recipient has no LessPay wallet, you need to create to get the money sent.</u>
+					</p>
+
+				</div>
+			</div>
+			
+
+
+
+		</div>
+	</div>
+    
+
+
+
+
+
+</form>

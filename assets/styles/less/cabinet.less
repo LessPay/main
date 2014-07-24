@@ -1,0 +1,258 @@
+@import "../bootstrap/variables.less";
+@import "../bootstrap/mixins.less";
+
+body {
+  //   background: #fff url(/images/struckaxiom.png) 0 0 repeat;
+      
+  // -webkit-filter: blur(5px);
+  // -moz-filter: blur(5px);
+  // -o-filter: blur(5px);
+  // -ms-filter: blur(5px);
+  // filter: blur(5px);
+}
+
+
+#inv_create_loader {
+    text-align: center;
+    position: relative;
+    
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -24px;
+        margin-left: -24px;
+    }
+
+    height: 302px;
+}
+
+
+
+
+.special-img {
+    .dropdown-toggle {
+        height: 50px;
+    }
+    
+
+    .dropdown-toggle > img {
+        position: relative;
+        top: -5px;
+        float: left;
+        left: 0px;
+        width: 34px;
+        height: 34px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        // border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+    
+}
+
+
+#support_btn {
+    position: fixed;
+    right: 50%;
+    bottom: 50%;
+    border-radius: 100%;
+    padding: 10px;
+    
+    margin-right: -680px;
+    margin-top: -21px;
+   
+    color: #4cae4c;
+    border: 1px solid #4cae4c;
+    z-index: 1000;
+    background-color: rgb(255, 255, 255);
+    
+    .transition();
+
+    &:focus {
+        outline: none;
+        color: darken(#4cae4c, 15%);
+        border: 1px solid darken(#4cae4c, 15%);
+        .transition();
+    }
+
+    .fa {
+        top: 2px;
+        position: relative;
+    }
+
+    &:hover {
+        color: darken(#4cae4c, 15%);
+        border: 1px solid darken(#4cae4c, 15%);
+        .transition();
+    }
+    
+
+}
+
+
+
+
+.navbar-default {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f2f2f2 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f2f2f2)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f2f2f2 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f2f2f2 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f2f2f2 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#f2f2f2 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
+
+    text-shadow: 1px 1px 0 #fff;
+    
+    border-bottom: solid 1px darken(#f2f2f2, 15%)!important;
+    
+    // font-weight: bold;
+    // a {
+    //     color: #000!important;
+    // }
+
+    .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+       
+
+        // text-shadow: none;
+        // background-color: #ffffff;
+        // box-shadow: 0 0 4px rgba(0, 0, 0, 0.2) inset;
+        // color: #555555;
+    
+
+
+    }
+    
+    .navbar-nav .dropdown .dropdown-menu {
+        // background-color: #f2f2f2;
+        // border-top-color: transparent;
+        border-top: 0;
+        
+        background: #f2f2f2; /* Old browsers */
+        background: -moz-linear-gradient(top,  #f2f2f2 0%, #ffffff 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #f2f2f2 0%,#ffffff 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+        right: 0px;
+    }
+
+    .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+        text-shadow: none;
+        color: #fff;
+    }
+
+
+
+     /* .navbar-nav > .open > a,  .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+     background: #f2f2f2; Old browsers
+     background: -moz-radial-gradient(center, ellipse cover,  #f2f2f2 0%, #ffffff 100%); FF3.6+
+     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#f2f2f2), color-stop(100%,#ffffff)); Chrome,Safari4+
+     background: -webkit-radial-gradient(center, ellipse cover,  #f2f2f2 0%,#ffffff 100%); Chrome10+,Safari5.1+
+     background: -o-radial-gradient(center, ellipse cover,  #f2f2f2 0%,#ffffff 100%); Opera 12+
+     background: -ms-radial-gradient(center, ellipse cover,  #f2f2f2 0%,#ffffff 100%); IE10+
+     background: radial-gradient(ellipse at center,  #f2f2f2 0%,#ffffff 100%); W3C
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=1 ); IE6-9 fallback on horizontal gradient
+     
+         } */
+
+}
+
+
+
+.profile-image  {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    
+}
+
+
+#envelope {
+    .fa {
+        font-size: 15px;
+    }
+    
+}
+
+.navbar {
+    box-shadow: 0px 0px 4px  rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-bottom: 0;
+}
+
+
+#dashboard {
+    
+    .panel-heading {
+        font-weight: bold;
+    }
+
+    .panel-balance {
+        .panel-body{
+            min-height: 187px;
+            position: relative;
+        }
+
+        .table {
+            border-top: 0;
+        }
+
+        
+    }
+
+    .panel-notif {
+        .panel-body{
+            // min-height: 188px;
+            position: relative;
+        }
+    }
+    
+    .panel-banner {
+        .panel-body {
+            min-height: 231px;
+            position: relative;
+        }
+    }
+
+    .fa-background {
+        font-size: 90pt;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin-top: -47px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .current_balance {
+        font-size: 32pt;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin-top: -51px;
+        //margin-top: -30px;
+        //margin-top: -82px;
+    }
+
+    
+    .operation {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: solid 1px #eee;
+        
+    }
+
+}
+
+
+#invoices {
+    #bottom_btns {
+        height: 65px;
+    }
+}

@@ -1,0 +1,113 @@
+<div id="login_section">
+    <div class="region padding2x-top">
+        <div class="container">
+            <div class="row">
+                <h1 class="padding2x-top padding-bottom">Create your LessPay Account</h1>
+                <div class="clearfix"></div>
+
+
+                <div class="region white shadow padding0 row    ">
+                    <div class="padding2x">
+                        <div class="col-md-4 padding2x-bottom padding2x-right">
+                            <h3 class="margin-bottom">Create an LessPay Account.</h3>
+                            <hr>
+                            <p>
+                                An LessPay CustomerID is your passcard for everything you do with LessPay: shop in online stores, access LessPay Support, connect your WebShop to LessPay Gateway, and more.
+                            </p>
+
+                            <p>Please read our <a href="">Terms of Use <i class="fa fa-angle-double-right"></i></a></p>
+
+                        </div>
+                        <div class="col-md-8">
+                            
+                            
+
+
+                            <form class="padding2x" role="form" action ng-submit="send()">
+
+                                <div class="container-fluid">
+                                    <ul class="nav nav-tabs nav-justified margin2x-bottom" role="tablist">
+                                        <li ng-class="{ 'active' : data.accountType==='client'}"><a href ng-click="data.accountType='client'">Personal Wallet</a></li>
+                                        <li ng-class="{ 'active' : data.accountType==='store'}"><a href ng-click="data.accountType='store'">Merchant Wallet</a></li>    
+                                    </ul>
+
+                                    
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group margin2x-bottom">
+                                                <input type="email" class="form-control input-lg" id="exampleInputEmail1" placeholder="Email" ng-model="data.email">
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="checkbox" ng-hide="generatePass">
+                                                <label>
+                                                  <input type="checkbox" ng-model="genereatePass" ng-click="generatePass=!generatePass"> Don't generate my password
+                                                </label>
+                                            </div>
+
+                                            <div class="form-group margin2x-bottom" ng-if="generatePass">
+                                                
+                                                <div class="input-group input-group-lg">
+                                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="data.password">
+                                                    <div class="input-group-btn">
+                                                        <a href class="btn btn-success-bd">{{ 'Show' }}</a>
+
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    
+
+
+                                    
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="col-xs-8">
+                                            <div class="alert alert-danger" ng-show="error!==' '">
+                                                <i class="fa fa-alert"></i> {{ error }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-4 text-center">
+                                            <button type="submit" ng-disabled="!canSend" class="btn btn-primary-gr btn-block btn-lg rounded text bold " ng-disabled="!canSend" popover="By clicking this button, you agree to our Terms and that you have read our Data Use Policy." popover-trigger="mouseenter" popover-placement="right" popover-append-to-body="1">
+                                                Create CustomerID
+                                            </button>
+                                            <small >
+                                                <a href ui-sref="content({ 'layout' : 'terms', 'path' : 'terms/terms.html' })" target="_blank">Terms of Use</a>
+                                            </small>
+                                        </div>
+
+                                    </div><!-- row -->
+                                </div><!-- container-fluid -->
+
+                            </form>
+
+
+
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

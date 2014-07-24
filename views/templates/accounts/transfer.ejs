@@ -1,0 +1,118 @@
+
+<div class="col-sm-6">
+	<form action class="form-horizontal" ng-submit="transfer()">	
+		<h2 class="margin0">Transfer</h2>	
+		<hr>		
+
+		<div class="form-group" >
+			<label for="amount" class="col-sm-3 control-label">Amount</label>
+			<div class="col-sm-9">
+				<div class="input-group amount-field">
+					<input type="number" class="form-control amount" placeholder="0" ng-model="data.amount">
+					<input type="number" class="form-control mantiss" placeholder="00" ng-model="data.mantissa">
+					
+					<div class="input-group-btn" dropdown>
+						<button type="button" class="btn btn-default dropdown-toggle" >{{ data.from }} <span class="caret"></span></button>
+						<ul class="dropdown-menu dropdown-menu-left" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class="form-group">
+			<label for="method" class="col-sm-3 control-label">To</label>
+			<div class="col-sm-9">
+
+
+
+				<div class="input-group">
+					<div class="input-group-btn" dropdown>
+						<button type="button" class="btn btn-default dropdown-toggle" >{{ methods[data.method] }} <span class="caret"></span></button>
+						<ul class="dropdown-menu dropdown-menu-left" role="menu">
+							<li ng-repeat="(code, method) in methods">
+								<a href ng-bind="method" ng-click="data.method=code;"></a>
+							</li>
+						</ul>
+					</div>
+
+					<select name="contact" id="contact" ng-if="data.method === 'contact'" class="form-control">
+						<option value="">Contact 1</option>
+					</select>
+
+					<input type="text" class="form-control" name="address" id="address" placeholder="" ng-model="data.address" ng-if="data.method === 'customer_id'">
+					<input type="email" class="form-control" name="address" id="address" placeholder="" ng-model="data.address" ng-if="data.method === 'email'">
+					<input type="email" class="form-control" name="address" id="address" placeholder="" ng-model="data.address" ng-if="data.method === 'jid'">
+					<input type="text" class="form-control" name="address" id="address" placeholder="" ng-model="data.address" ng-if="data.method === 'icq'">
+					<input type="text" class="form-control" name="address" id="address" placeholder="" ng-model="data.address" ng-if="data.method === 'phone'">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<div class="col-sm-12">
+				<hr>
+				
+			</div>
+			
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-3">
+				<button type="submit" class="btn btn-warning btn-block"><i class="fa fa-calendar fa-fw"></i> Schedule</button>
+			</div>
+			<div class="col-sm-3">
+				<button type="submit" class="btn btn-success btn-block">Send</button>
+			</div>
+			<div class="col-sm-6">
+				<div class="checkbox" ng-hide="data.save_template">
+					<label>
+						<input type="checkbox" ng-model="data.save_template">
+						Save as template
+					</label>
+				</div>
+
+				<div class="input-group" ng-if="data.save_template">
+					<span class="input-group-addon">
+						<input type="checkbox"  ng-model="data.save_template">
+					</span>
+					<input type="text" class="form-control" placeholder="Template name" ng-model="data.template_name">
+				</div>
+				
+			</div>
+		</div>
+
+
+
+	</form>
+</div>
+<div class="col-sm-6">
+	<div class="alert alert-danger">
+		Something go wrong!
+	</div>
+	<div class="panel panel-warning">
+		<div class="panel-heading">
+			With fee: <strong>100</strong>
+		</div>
+		<div class="panel-body">
+			<strong>LIMITS: </strong><br>
+			Lorem ipsum dolor sit amet.
+			<br>
+			<br>
+			<strong>FEE: </strong> <br>
+			Lorem ipsum dolor sit amet.
+			
+		</div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="col-md-6" ng-repeat="account in accounts.data">
+	<div class="panel panel-default ">
+		<div class="panel-body">
+			<div class="fluid-container">
+				<div class="row">
+					<div class="col-md-3 text-center">
+
+						<qrcode version="5" error-correction-level="2" size="107" data="ACCOUNT: {{account.id}}" class="margin-auto"></qrcode>
+						
+						<div class="clearfix"></div>
+						<div class="btn-group btn-group-xs">
+							<a class="btn btn-primary" tooltip-placement="bottom" tooltip-append-to-body="true" href ui-sref="accounts.history" tooltip="Account history"><i class="fa fa-table"></i></a>&nbsp;
+							<a class="btn btn-primary" tooltip-placement="bottom" tooltip-append-to-body="true" href ng-click="changeAddress(account.id)" tooltip="Change deposit address"><i class="fa fa-slack"></i></a>&nbsp;
+							<a class="btn btn-primary" tooltip-placement="bottom" tooltip-append-to-body="true" href ui-sref="accounts.transfer" tooltip="Transfer"><i class="fa fa-exchange"></i></a>&nbsp;
+							<a class="btn btn-primary" tooltip-placement="bottom" tooltip-append-to-body="true" href ui-sref="accounts.transfer" tooltip="Withdraw"><i class="fa fa-money"></i></a>
+						</div>
+
+					</div>
+					<div class="col-md-9 ">
+						
+
+						<h4>
+							<strong>{{ account.name }}</strong> 
+							<small tooltip="Account ID" class="pull-right" tooltip-placement="bottom" tooltip-append-to-body="true"  ng-bind="account.id"></small>
+												
+						</h4>
+						<div>{{ account.balance }} {{ account.code }} </div>
+						<br>
+
+						
+						<i class="fa fa-btc fa-3x pull-left"></i>
+						<span ng-bind="account.fund"></span> <br><small>deposit fee: 0.00 {{ account.code }}</small>
+
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>

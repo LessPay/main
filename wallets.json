@@ -1,0 +1,26 @@
+{
+    "BTC": {
+        "fund": 0,
+        "withdrawal": 0,
+        "allow_fund": true,
+        "allow_withdrawal": true
+    },
+    "LTC": {
+        "fund": 0,
+        "withdrawal": 0,
+        "allow_fund": true,
+        "allow_withdrawal": true
+    },
+    "ANI": {
+        "fund": 0,
+        "withdrawal": 0,
+        "allow_fund": true,
+        "allow_withdrawal": true
+    },
+    "DOGE": {
+        "fund": 0.06,
+        "withdrawal": 0.05,
+        "allow_fund": true,
+        "allow_withdrawal": true
+    }
+}

@@ -1,0 +1,205 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="http://api.randomuser.me/portraits/men/84.jpg" >
+            </div>
+            <a href class="btn btn-block btn-primary-gr rounded">CHANGE AVATAR</a>
+            <hr>
+            <ul class="nav padding2x-bottom  nav-pills nav-stacked">
+                <li ng-class="{ 'active' : template==='personal' || !template}"><a href ng-click="template='personal'">Personnal information</a></li>
+                <li ng-class="{ 'active' : template==='contact'}"><a href ng-click="template='contact'">Contact information</a></li>
+                <li ng-class="{ 'active' : template==='passport'}"><a href ng-click="template='passport'">Passport information</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <form action class="form-horizontal" role="form">
+                <div ng-if="template==='personal' || !template">
+                    <legend>Personnal information</legend>
+
+                    <div class="form-group">                    
+                        <label for="last_name" class="col-sm-2 control-label">Last name</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Last name">
+
+                        </div>    
+                    </div>               
+
+
+                    <div class="form-group">
+                        <label for="name"  class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Name">
+
+                        </div>    
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="middle_name"  class="col-sm-2 control-label">Middle Name</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Middle name">
+
+                        </div>    
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="birth_date"  class="col-sm-2 control-label">Date of birth</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Date of birth">
+
+                        </div>    
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="gender"  class="col-sm-2 control-label">Gender </label>
+
+                        <div class="col-sm-10">
+                        <select name="" id="" class="form-control">
+                            <option value="">Match the gender</option>
+                            <option value="">Male</option>
+                            <option value="">Female</option>
+                        </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <button type="submit" class="btn btn-info btn-block">SAVE</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div ng-if="template==='contact'">
+                    <legend>Contact information</legend>
+
+
+                    <div class="form-group">
+                        <label for="email"  class="col-sm-2 control-label">Email</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Email">
+
+                        </div>    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone"  class="col-sm-2 control-label">Phone number</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Phone number">
+
+                        </div>    
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="jid"  class="col-sm-2 control-label">Jabber</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Jabber">
+
+                        </div>    
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="birth_date"  class="col-sm-2 control-label">ICQ</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="ICQ">
+
+                        </div>    
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <button type="submit" class="btn btn-info btn-block">SAVE</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div ng-if="template==='passport'">
+
+                    <legend>Passport information</legend>
+
+                    <div class="form-group">
+                        <label for="email"  class="col-sm-2 control-label">Serial number</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Serial number">
+
+                        </div>    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone"  class="col-sm-2 control-label">Issued by</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Issued by"> 
+
+                        </div>   
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="jid"  class="col-sm-2 control-label">Place of issue</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Place of issue">
+
+                        </div>    
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="birth_date"  class="col-sm-2 control-label">Registration country</label>
+
+                        <div class="col-sm-10">
+                        <select name="" id="" class="form-control">
+                            <option>Russia</option>
+                            <option>United Kingdom</option>
+                            <option>United States of America</option>
+                            <option>Ukraine</option>
+                            <option>Germany</option>
+                        </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="jid"  class="col-sm-2 control-label">Registration address</label>
+
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Registration address">
+
+                        </div>    
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <button type="submit" class="btn btn-info btn-block">SAVE</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </form>
+        </div>
+
+    </div>
+</div>

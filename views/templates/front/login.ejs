@@ -1,0 +1,99 @@
+<div id="login_section">
+    <div class="region padding2x-top">
+        <div class="container">
+            <div class="row">
+                <h1 class="padding2x-top padding-bottom">Sign In</h1>
+                <div class="clearfix"></div>
+
+
+                <div class="region white shadow padding0 row    ">
+                    <div class="padding2x">
+                        <div class="col-md-4 padding2x-bottom padding2x-right">
+                            <h3 class="margin-bottom">Sign in to manage your LessPay Account.</h3>
+                            <hr>
+                            <p>
+                                To view and edit your LessPay Account, please sign in. If you don't have an LessPay CustomerID, you can <a href ui-sref="registration">create one now</a>.
+                            </p>
+
+                        </div>
+                        <div class="col-md-8">
+
+
+                            <form class="padding2x" role="form" action ng-submit="login()" >                   
+
+
+                                <div class="container-fluid margin2px-bottom">
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control input-lg" id="customer_id" autofill name="customer_id"  ng-model="data.customer_id" placeholder="CustomerID" focus-me="true">
+                                                <div class="help-block">
+                                                    <a href ui-sref='restore({ template : "email", customer_id : "" })'>Forgot your CustomerID?</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <div class="input-group input-group-lg">
+                                                    <input ng-attr-type="{{ showPassword ? 'text' : 'password' }}" class="form-control " id="password" autofill name="password" ng-model="data.password" placeholder="Password">
+
+                                                    <div class="input-group-btn">
+                                                        <div class="btn btn-success-bd"  ng-click="togglePass()">
+                                                            <span id="fixed-label">{{ showPassword ? 'Hide' : 'Show' }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="help-block">
+                                                    <a href ng-click="restorePassword()">Forgot your password?</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                
+
+                                
+
+                                
+
+
+                                    <hr>
+
+                                    <div class="row">
+
+                                        <div class="col-xs-8">
+                                            <div class="alert alert-danger" ng-show="error">
+                                                <i class="fa fa-alert"></i> {{ error }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-4">
+                                            <button type="submit" ng-disabled="!canSend" class="btn btn-primary-gr btn-block btn-lg rounded text bold pull-right">Sign In</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

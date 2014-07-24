@@ -1,0 +1,99 @@
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="mainCtrl">
+  <div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" ng-click="navbarCollapsed = !navbarCollapsed">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/" ui-sref="home">
+			LessPay
+		</a>
+	</div>
+	<div class="collapse navbar-collapse"  collapse="navbarCollapsed">
+		<ul class="nav navbar-nav" lp-dropdown>
+			<li class="dropdown">
+				<a href >Buy <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li ui-sref-active="active"><a href ui-sref="content({ 'layout' : 'buy_page', 'path' : 'buy/overview.html' })">Overview</a></li>
+					<li ui-sref-active="active"><a href ui-sref="content({ 'layout' : 'buy_page', 'path' : 'buy/make_payment.html' })">Make a payment...</a></li>
+					<li ui-sref-active="active"><a href ui-sref="content({ 'layout' : 'buy_page', 'path' : 'buy/purchase_online.html' })">How to Purchase Online</a></li>
+					<li ui-sref-active="active"><a href ui-sref="content({ 'layout' : 'buy_page', 'path' : 'buy/purchase_stores.html' })">How to Purchase Stores</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href >Sell <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li  ui-sref-active="active"><a ui-sref="content({ 'layout' : 'sell_page', 'path' : 'buy/overview.html' })">Overview</a></li>
+					<li  ui-sref-active="active"><a ui-sref="content({ 'layout' : 'sell_page', 'path' : 'buy/overview.html' })">Request a payment...</a></li>
+					<li  ui-sref-active="active"><a ui-sref="content({ 'layout' : 'sell_page', 'path' : 'buy/overview.html' })">How to Sell Online</a></li>
+					<li  ui-sref-active="active"><a ui-sref="content({ 'layout' : 'sell_page', 'path' : 'buy/overview.html' })">How to Purchase Person</a></li>
+					<li  ui-sref-active="active"><a ui-sref="content({ 'layout' : 'sell_page', 'path' : 'buy/overview.html' })">Go to Business Solution</a></li>
+				</ul>
+			</li>
+			<li  ui-sref-active="active"><a href ui-sref="send">Send</a></li>
+      	</ul>
+
+		<div class="pull-right">
+			<button type="submit" class="btn btn-sm btn-default text bold margin-right" ui-sref="login"  ui-sref-active="btn-success-bd">
+				SIGN IN
+			</button>
+			<button type="button" class="btn btn-sm btn-default text bold  navbar-btn" ui-sref="registration"  ui-sref-active="btn-success-bd">
+				REGISTRATION
+			</button>
+		</div>
+
+
+	</div>
+  </div>
+</nav>
+
+<div ui-view id="wrap" class="region gray ng-cloack" ng-cloak></div>
+
+
+<section id="footer" class="region darkest padding2x-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-xs-4 footer-nav">
+				<strong class="margin-bottom">MAIN MENU</strong>
+				<a href  ui-sref="content({ 'layout' : 'page', 'path' : 'terms/terms_of_use.html' })">Terms of Use</a>
+				<a href ui-sref="content({ 'layout' : 'page', 'path' : 'terms/contacts.html' })">Contacts</a>
+				<a href  ui-sref="content({ 'layout' : 'page', 'path' : 'terms/logos.html' })">Corporate Logos</a>
+			</div>
+
+			<div class="col-md-3 col-xs-3 footer-nav">
+				<strong class="margin-bottom">Information</strong>
+				<a href="">Pricing</a>
+				<a href="#" du-smooth-scroll>Top Up</a>
+				<a href="">Providers</a>
+				<a href="">Withdraw money</a>
+			</div>
+
+			<div class="col-md-3 hidden-xs">
+
+
+
+
+			</div>
+			<div class="col-md-3 col-md-5 text-right">
+				<strong class="margin-bottom">Social networks</strong>
+				<a href="#" class="btn btn-success-bd btn-sm"><i class="fa fa-facebook fa-fw "></i></a>&nbsp;
+				<a href="#" class="btn btn-success-bd btn-sm"><i class="fa fa-vk fa-fw "></i></a>&nbsp;
+				<a href="#" class="btn btn-success-bd btn-sm"><i class="fa fa-twitter fa-fw "></i></a>
+
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 margin2x-top padding2x-top">
+				Copyright &copy; LessPay, 2014. All rights reserved.
+            </div>
+		</div>
+	</div>
+
+
+</section>

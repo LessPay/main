@@ -1,0 +1,77 @@
+ <form class="column_4 radius bck light padding offset_4 margin-top margin-bottom " ng-submit="registration()" action>
+
+	<img src="/img/sign.png" alt="">
+
+	<p class="margin">Online dumps shop, where you can buy fresh and cheap dumps online with both track 1 and track 2. Only fresh, 90-99% valid bases.</p>
+
+	<hr>
+	
+	<div ng-show="error">
+		<div class="bck dark padding">
+			{{ error }}
+		</div>
+
+		<hr>
+	</div>
+
+
+	<div class="text left">
+	        <input 	type="text" 
+	        		name="username" 
+	        		id="username" 
+	        		placeholder="Username" 
+	        		ng-model="data.username">
+
+	        <input 	type="password" 
+	        		name="name" 
+	        		id="name" 
+	        		placeholder="Password"
+	        		ng-model="data.password">
+	        
+	        <input 	type="password" 
+        			name="confirm" 
+        			d="confirm" 
+        			placeholder="Confirm password"
+        			ng-model="data.confirm">
+
+	        <input 	type="text" 
+	        		name="icq" 
+	        		id="icq" 
+	        		placeholder="ICQ"
+	        		ng-model="data.icq">
+	        
+	        <input 	type="text" 
+	        		name="username" 
+	        		id="username" 
+	        		placeholder="Jabber"
+	        		ng-model="data.jid">
+
+	        <div class="col6">
+	            <input 	type="text" 
+	                	name="captcha" 
+	                	id="captcha" 
+	                	placeholder="Captcha"
+	                	ng-model="data.captcha">
+
+	        </div>
+	        <div class="col6"  id="captcha_image">
+	            <img captcha src="/captcha/show" alt="" height="30px" title="Click for change">
+	        </div>
+
+	        <hr>
+	        <div class="col6">
+	            <button class="success anchor">Create</button>
+	        </div>
+	        <div class="col6">
+	            <button ui-sref="home" class="anchor secondary">Back to login</button>
+	        </div>
+
+	</div>
+
+	<hr>
+	<div>
+	    Jabber: swipe@100500.cc
+	</div>
+
+
+</form>

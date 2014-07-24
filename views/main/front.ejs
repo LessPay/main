@@ -1,0 +1,651 @@
+ <%- partial('../templates/partials/header')%>
+
+
+
+
+<a href id="support_btn" class="region" tooltip="Support" tooltip-placement="left" tooltip-arrange-to-body="1">
+    <i class="fa fa-3x fa-headphones"></i>
+</a>
+
+
+
+<div id="wrap"  class="padding2x-top" ui-view>
+
+
+
+
+
+        <div class="" id="dashboard">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="page-header">
+                            <h1 >Dashboard 
+                                <a href="" class="pull-right" tooltip="Change dashboard" tooltip-placement="left">
+                                    <i class="fa fa-cog "></i>
+                                </a>
+                            </h1>
+                        </div>   
+                    </div>                     
+                </div>
+                <div class="clearfix"></div>
+
+
+
+                <div class="row" >
+
+
+
+<div  lp-sortable>
+
+    <div class="col-md-4"  ng-controller="InfoWidgetCtrl">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a href="" class="pull-right" ui-sref="settings.profile"><i class="fa fa-pencil"></i></a>
+                <storng>Personal information</storng>
+            </div>
+            <div class="panel-body">
+                
+                <div class="thumbnail">
+                    <img src="http://api.randomuser.me/portraits/men/84.jpg" >
+                </div>
+                <div><strong>Email: </strong><span ng-bind="data.email"></span></div>
+                <div><strong>CustomerID: </strong><span ng-bind="data.customer_id"></span></div>
+                <div><strong>User ID: </strong><span ng-bind="data.id"></span></div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-8" ng-controller="TransferCtrl" id="sendWidget">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                TRANSFER
+
+                <span class="dropdown pull-right" on-toggle="toggled(open)" ng-hide="!templates.length" is-open="dds.tpls">
+
+                    <a href=""  class="dropdown-toggle"  tooltip="Load template">
+                        <i class="fa fa-fw fa-star"></i><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="template in templates">
+                            <a href ng-click="setTemplate(template.order)">{{ template.name }}</a>
+                        </li>
+                    </ul>
+                </span>
+
+
+               
+            </div>
+
+                <div class="row padding-top">
+                    <div class="col-xs-7">
+                        
+                   
+                        <form action class="form-horizontal padding-left"  role="form">                             
+
+                            <div class="form-group" >
+                                <label for="method" class="col-sm-3 control-label">Amount</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group amount-field" >
+                                        <input type="text" class="form-control amount" placeholder="0" ng-model="data.amount">
+                                        <input type="text" class="form-control mantiss" placeholder="00" ng-model="data.mantissa">
+                                        
+                                        <div class="input-group-btn dropdown" is-open="dds.accs">
+                                            <button type="button" class="btn btn-default dropdown-toggle" >{{ data.from_account.code }} <span class="caret"></span></button>
+                                            
+                                            <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                                                <li ng-repeat="account in accounts track by account.id">
+                                                    <a href ng-click="setAccount(account)">
+                                                        {{ account.code }} {{ account.balance }} {{ account.current_name }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <label for="method" class="col-sm-3 control-label">To</label>
+                                <div class="col-sm-9">
+
+
+
+                                    <div class="input-group">
+                                        <div class="input-group-btn dropdown"  is-open="dds.mthds">
+                                            <button type="button" class="btn btn-success-bd btn-default dropdown-toggle" >{{ methods[data.to_type] }} <span class="caret"></span></button>
+                                            <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                                                <li ng-repeat="(code, method) in methods">
+                                                    <a href ng-bind="method" ng-click="setMethod(code, method)"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <!--
+                                            <select name="contact" id="contact" ng-if="data.to_type === 'contact'" class="form-control">
+                                                <option ng-repeat="contact in contacts track by contact.id" value="">{{ contact.email }} {{ contact.customer_id }}</option>
+                                            </select>
+                                        -->
+
+                                        <input type="text" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'account'">
+                                        <input type="email" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'email'">
+                                        <input type="email" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'jid'">
+                                        <input type="text" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'icq'">
+                                        <input type="text" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'phone'">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group padding-bottom">
+                                <label for="method" class="col-sm-3 control-label">Comment</label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="comment" name="comment" ng-model="data.comment" placeholder="Comment">
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div><!-- END COL-XS -->
+                    <div class="col-xs-5">
+                        <div class="padding-right">
+                            
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    Fee: 
+                                </div>
+                            </div>
+
+                            <div class="panel panel-danger" ng-show="error">
+                                <div class="panel-body text bold red">
+                                    In your account are insufficient funds to pay
+                                </div>
+                            </div>
+
+                            
+
+                        </div>
+
+                        
+                    </div>
+
+
+                </div>
+
+
+            <div class="panel-footer text-right">
+                <input type="text" class="form-control pull-left input-sm" placeholder="Template name" ng-model="data.template_name">
+
+                <button type="submit" class="btn btn-dafault btn-sm" tooltip="Save as template" ng-click="saveTemplate()" ng-disabled="loading">
+                    <i class="fa fa-star fa-fw"></i>
+                </button>&nbsp;
+
+                <button type="submit" class="btn btn-dafault btn-sm" tooltip="Schedule"><i class="fa fa-calendar fa-fw"></i></button>&nbsp;
+                
+                <button type="submit" class="btn btn-success btn-sm" ng-click="transfer()" ng-disabled="loading">
+                        <loading></loading> 
+                        <i class="fa fa-fw fa-exchange" ng-hide="loading"></i> <strong>SEND </strong>
+                </button>
+
+               
+            </div>
+                
+
+                
+
+
+        </div>
+    </div>
+
+    
+
+
+
+    <div class="col-md-8"  >
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a href="" class="pull-right" ui-sref="settings.profile"><i class="fa fa-pencil"></i></a>
+                <storng>Invoices</storng>
+            </div>
+
+
+            <accordion >
+                <accordion-group >
+                    <accordion-heading>
+                        <strong>500 ANI</strong> &nbsp; MR.Swipe
+
+                        <small class="pull-right">
+                            <a href ><i class="fa fa-credit-card"></i> pay</a>&nbsp;
+                            <a href ng-click="cancel($event)"><i class="fa fa-times"></i> cancel</a>
+                        </small>
+                    </accordion-heading>
+                    
+                    Amount with fee: <strong>505</strong> 
+
+                    <div class="btn-group btn-group-xs pull-right" dropdown>
+                        <button type="button" class="btn btn-success-bd">Pay</button>
+                        
+                        <button type="button" class="btn btn-success-bd dropdown-toggle">
+                            <span class="caret"></span>&nbsp;
+                            <span>3294 ANI </span>
+                        </button>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+
+
+
+
+
+                </accordion-group>
+                <accordion-group >
+                    <accordion-heading>
+                        <strong>500 ANI</strong> &nbsp; MR.Swipe
+
+                        <small class="pull-right">
+                            <a href ><i class="fa fa-credit-card"></i> pay</a>&nbsp;
+                            <a href ng-click="cancel($event)"><i class="fa fa-times"></i> cancel</a>
+                        </small>
+                    </accordion-heading>
+                    
+                    Amount with fee: <strong>505</strong> 
+
+                    <div class="btn-group btn-group-xs pull-right" dropdown>
+                        <button type="button" class="btn btn-success-bd">Pay</button>
+                        
+                        <button type="button" class="btn btn-success-bd dropdown-toggle">
+                            <span class="caret"></span>&nbsp;
+                            <span>3294 ANI </span>
+                        </button>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+
+
+
+
+
+                </accordion-group>
+                <accordion-group >
+                    <accordion-heading>
+                        <strong>500 ANI</strong> &nbsp; MR.Swipe
+
+                        <small class="pull-right">
+                            <a href ><i class="fa fa-credit-card"></i> pay</a>&nbsp;
+                            <a href ng-click="cancel($event)"><i class="fa fa-times"></i> cancel</a>
+                        </small>
+                    </accordion-heading>
+                    
+                    Amount with fee: <strong>505</strong> 
+
+                    <div class="btn-group btn-group-xs pull-right" dropdown>
+                        <button type="button" class="btn btn-success-bd">Pay</button>
+                        
+                        <button type="button" class="btn btn-success-bd dropdown-toggle">
+                            <span class="caret"></span>&nbsp;
+                            <span>3294 ANI </span>
+                        </button>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+
+
+
+
+
+                </accordion-group>
+                <accordion-group >
+                    <accordion-heading>
+                        <strong>500 ANI</strong> &nbsp; MR.Swipe
+
+                        <small class="pull-right">
+                            <a href ><i class="fa fa-credit-card"></i> pay</a>&nbsp;
+                            <a href ng-click="cancel($event)"><i class="fa fa-times"></i> cancel</a>
+                        </small>
+                    </accordion-heading>
+                    
+                    Amount with fee: <strong>505</strong> 
+
+                    <div class="btn-group btn-group-xs pull-right" dropdown>
+                        <button type="button" class="btn btn-success-bd">Pay</button>
+                        
+                        <button type="button" class="btn btn-success-bd dropdown-toggle">
+                            <span class="caret"></span>&nbsp;
+                            <span>3294 ANI </span>
+                        </button>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+
+
+
+
+
+                </accordion-group>
+
+
+
+            </accordion>
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="col-md-8"  ng-controller="BalanceWidgetCtrl">
+        <div class="panel panel-success panel-balance">
+            <div class="panel-heading">
+                <a href ng-click="refresh()" tooltip="Refresh"><i class="fa fa-refresh fa-fw " ng-class="{ 'fa-spin' : loading }"></i> </a>
+                <strong>ACCOUNTS</strong>
+                <small class="pull-right"><a href ng-click="showCurrentBalance = !showCurrentBalance">
+                    {{ showCurrentBalance ? 'ACTIVE' : ' ALL'  }}
+                </a></small>
+            </div>
+            <div class="panel-body" ng-show="!showCurrentBalance" >
+                <div class="current_balance text-center">{{ accounts.data[default].balance || 0 }} {{ accounts.data[default].shortCode }}</div>
+
+                <div class="operation padding">
+                    <a href ui-sref="accounts.transfer"><i class="fa fa-exchange fa-fw"></i> Send</a>
+                    <a href="" class="margin-left"> <i class="fa fa-list fa-fw"></i> History</a>
+                    <a href ui-sref="accounts.list" class="pull-right"><i class="fa fa-cog fa-fw"></i></a>
+                </div>
+            </div>
+            <table class="table table-hover table-striped" ng-show="showCurrentBalance">
+                <tbody>
+                    <tr ng-repeat="account in accounts.data track by account.id">
+                        <td ng-bind="account.name"></td>
+                        <td><a href="" tooltip="Send" ui-sref="accounts.transfer"> <i class="fa fa-exchange fa-fw"></i></a></td>
+                        <td>{{account.balance }} {{account.shortCode }} </td>
+                        <td class="text-center" ng-click='setDefault($index)'>                            
+                            <a href=""><i class="fa fa-fw" ng-class="{ 'fa-circle-o' : default !== $index, 'fa-circle' : default === $index   }"></i></a>                  
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+
+        </div>
+    </div>
+
+<div class="col-md-4"  ng-controller="TemplatesWidgetCtrl">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-star"></i> TEMPLATES OF PAYMENT 
+                <small class="pull-right">
+                    <a href ui-sref="accounts.transfer">NEW</a>
+                </small>
+            </div>
+
+            <div class="panel-body" ng-hide="templates.length">
+                No templates created yet
+            </div>
+            <ul class="list-group" ng-show="templates.length">
+                <li class="list-group-item" ng-repeat="template in templates track by template.id">
+                    {{ template.name }}
+                    <a href="" class="pull-right"><i class="fa fa-fw fa-arrow-circle-o-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+
+    <div class="col-md-4 hide" >
+        <div class="panel panel-success region green panel-banner">
+            <div class="panel-body">
+                <div class="fa-background">
+                    <i class="fa fa-slack "></i>
+                </div>
+
+                <h2>Create voucher</h2>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4" >
+        <div class="panel panel-default panel-notif">
+            <div class="panel-heading">
+                <i class="fa fa-warning fa-fw"></i> NOTIFICATIONS
+            </div>
+            <div class="panel-body">
+                You don't have any notifications.
+            
+            </div>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+
+    <div class="col-md-4 hide" >
+        <div class="panel panel-alert region red panel-banner">
+            <div class="panel-body"></div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4 hide" >
+        <div class="panel panel-info region blue panel-banner">
+            <div class="panel-body"></div>
+        </div>
+    </div>
+
+
+
+           
+                        
+
+
+
+
+
+                                
+
+                        <div class="col-md-8"  ng-controller="LastTransCtrl">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-list"></i> LAST TRANSACTION
+                                    <a href="" class="pull-right" ui-sref="history">FULL</a>
+                                </div>
+
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Transaction ID</th>
+                                                <th>Processing date</th>
+                                                <th>Amount</th>
+                                                <th>Currency</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-show="newTrs && trs.length >= 5">
+                                                <td colspan="5">
+                                                    <a href ng-click="getNew()" class="btn btn-default  btn-block text-center">
+                                                        <%= __('NEW TRANSACTIONS') %>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr ng-show="!trs.length">
+                                                <td colspan="5">
+                                                    <div class="padding text bold">
+                                                        <%= __('Transaction list is empty.') %>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat="tr in trs track by tr.id">
+                                                <td ng-bind="tr.id"></td>
+                                                <td>{{ tr.createdAt | date:medium }}</td>
+                                                <td >{{ tr.amount }}</td>
+                                                <td ng-bind="tr.code"></td>
+                                                <td>
+                                                    <a href="" tooltip="Print transaction" tooltip-placement="right" tooltip-arrange-to-body="1" ><i class="fa fa-print"></i></a>
+                                                </td>
+                                            </tr> 
+                                        </tbody>
+                                        <tfoot>
+                                            
+                                            <tr>
+                                                <td colspan=5 class="text-center" ng-click="more()">
+                                                    <a href="" class="" >
+                                                        MORE
+                                                    </a>                                        
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    
+
+                            </div>
+                        </div>     
+
+
+
+
+                        
+                        
+
+    <div class="col-md-4 hide" >
+        <div class="panel panel-settings region dotted panel-banner">
+            <div class="panel-body">
+                <div class="fa-background">
+                    <i class="fa fa-cog "></i>
+                </div>
+                Setup dashboard
+
+            </div>
+        </div>
+    </div>
+
+</div>
+                    
+
+
+                      
+
+
+                    <div class="col-md-12">
+                        <br>
+                        <legend>PAYMENTS INSTRUMENT</legend>
+                    </div>
+                    
+
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+
+                            <div class="panel-body">
+                                <strong>MOBILE APPLICATION</strong>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <br><br>
+
+        </div>
+
+
+</div>
+
+
+<section id="footer" class="region darkest padding2x-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-xs-4 footer-nav">
+                <strong class="margin-bottom">MAIN MENU</strong>
+                <a href  ui-sref="content({ 'layout' : 'page', 'path' : 'terms/terms_of_use.html' })">Terms of Use</a>
+                <a href ui-sref="content({ 'layout' : 'page', 'path' : 'terms/contacts.html' })">Contacts</a>
+                <a href  ui-sref="content({ 'layout' : 'page', 'path' : 'terms/logos.html' })">Corporate Logos</a>
+            </div>
+
+            <div class="col-md-3 col-xs-3 footer-nav">
+                <strong class="margin-bottom">Information</strong>
+                <a href="">Pricing</a>
+                <a href="#" du-smooth-scroll>Top Up</a>
+                <a href="">Providers</a>
+                <a href="">Withdraw money</a>
+            </div>
+
+            <div class="col-md-3 hidden-xs">
+
+
+
+
+            </div>
+            <div class="col-md-3 col-md-5 text-right">
+                <strong class="margin-bottom">Social networks</strong>
+                <a href="#" class="btn btn-success-bd btn-sm"><i class="fa fa-facebook fa-fw "></i></a>&nbsp;
+                <a href="#" class="btn btn-success-bd btn-sm"><i class="fa fa-vk fa-fw "></i></a>&nbsp;
+                <a href="#" class="btn btn-success-bd btn-sm"><i class="fa fa-twitter fa-fw "></i></a>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 margin2x-top padding2x-top">
+                Copyright &copy; LessPay, 2014. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+
+</section>

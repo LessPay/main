@@ -1,0 +1,206 @@
+<div class="container margin2x-top margin2x-bottom ">
+	<div class="row region white shadow">
+		
+		<div class="col-xs-12">
+			<div class="padding">
+				<div class="">
+					<h3 class="pull-left">
+
+						<span class="dropdown" on-toggle="toggled()">
+							<a href class="dropdown-toggle">
+								All invoices
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href>All</a></li>
+								<li><a href>Paid</a></li>
+								<li><a href>Not Paid</a></li>
+								<li><a href>Incoming</a></li>
+								<li><a href>Outcoming</a></li>
+							</ul>
+						</span> &nbsp;
+
+						for the&nbsp;
+
+						<span class="dropdown" on-toggle="toggled()">
+							<a href class="dropdown-toggle">
+								period
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href>week</a></li>
+								<li><a href>month</a></li>
+								<li><a href>quarter</a></li>
+								<li><a href>year</a></li>
+							</ul>
+						</span>&nbsp;
+
+						from 07/01/2014 &nbsp;
+						to 07/22/2014&nbsp;
+						of &nbsp; 
+
+						<span class="dropdown" on-toggle="toggled()">
+							<a href class="dropdown-toggle">
+								all types
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href>all</a></li>
+								<li><a href>incoming</a></li>
+								<li><a href>outcoming</a></li>
+							</ul>
+						</span> 
+
+					</h3>
+
+
+					<a href="" class="btn btn-primary btn-lg pull-right margin-top" ng-click="createInvoice()">Create invoice</a>
+
+				</div>
+				<div class="clearfix"></div>
+				
+
+				<h2 ng-if="!invoices.data.length">You don't have any invoices yet</h2>
+
+				<table ng-if="invoices.data.length" class="table table-hover table-striped margin2x-top">
+					<tbody>
+						<tr ng-repeat="inv in invoices.data">
+							<td  ng-click="showInvoice(inv)">
+								<i class="fa text" ng-class="{ 'fa-long-arrow-right red' :  inv.type !== 'in',  'fa-long-arrow-left green' :  inv.type !== 'out' }"></i>
+							</td>
+							<td  ng-click="showInvoice(inv)">
+								{{ inv.createdAt | date : 'longDate' }} - {{ inv.lifetime | date : 'longDate' }} 
+							</td>
+							<td  ng-click="showInvoice(inv)"></td>
+							<td  ng-click="showInvoice(inv)">
+								<div class="text gray"> {{ inv.comment }}</div>
+							</td>
+							<td  ng-click="showInvoice(inv)">{{ inv.amount }} {{ inv.code }}</td>
+							<td class="text-right">
+								<a href class="btn btn-success-bd btn-xs" ng-click="pay(inv, $event)">PAY</a>&nbsp;
+								<small><a href class="" ng-click="reject(inv, $event)"><i class="fa fa-times"></i></a></small>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<pagination  direction-links="false" boundary-links="true" total-items="100" ng-model="bigCurrentPage" max-size="4" class="pagination-sm" boundary-links="true" rotate="false" ></pagination>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/ng-template" id="/template/bills/createInvoice.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Create an invoice</h3>
+    </div>
+    <div class="modal-body">
+
+
+
+		<form action class="form-horizontal" >
+
+				<div class="form-group">
+					<label for="comment" class="col-sm-2 control-label">Recipient</label>
+					<div class="col-sm-10">
+						<div class="input-group input-group-lg">
+                            <div class="input-group-btn dropdown"  is-open="dds.mthds">
+                                <button type="button" class="btn btn-success-bd btn-default dropdown-toggle" >
+                                	{{ wallet.methods[data.to_type] }} &nbsp;
+                                	<span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                                    <li ng-repeat="(code, method) in wallet.methods">
+                                        <a href ng-bind="method" ng-click="setMethod(code, method)"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <input type="text" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'account'">
+                            <input type="email" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'email'">
+                            <input type="email" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'jid'">
+                            <input type="text" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'icq'">
+                            <input type="text" class="form-control text-right" name="address" id="address" placeholder="" ng-model="data.to_address" ng-if="data.to_type === 'phone'">
+                        </div>
+					</div>
+				</div>
+
+
+				<div class="form-group" >
+				    <label for="method" class="col-sm-2 control-label">Amount</label>
+				    <div class="col-sm-10">
+				        <div class="input-group amount-field input-group-lg">
+				            <input type="text" class="form-control amount " placeholder="0" ng-model="data.amount">
+				            <input type="text" class="form-control mantiss " placeholder="00" ng-model="data.mantissa">
+				            
+				            <div class="input-group-btn" dropdown  is-open="dds.accs">
+				                <button type="button" class="btn btn-default dropdown-toggle" >{{ data.from_account.code }} <span class="caret"></span></button>
+				                <ul class="dropdown-menu dropdown-menu-left" role="menu">
+				                    <li ng-repeat="account in wallet.data track by account.id">
+				                        <a href ng-click="selectAccount(account)">
+				                            {{ account.code }} {{ account.balance }} 
+				                        </a>
+				                    </li>
+				                </ul>
+				            </div>
+
+
+				        </div>
+				    </div>
+				</div>
+
+
+				<div class="form-group">
+					<label for="comment" class="col-sm-2 control-label">Description</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control input-lg" placeholder="Comment" ng-model="data.comment">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="comment" class="col-sm-2 control-label">Expiration date</label>
+					<div class="col-sm-10">
+					<div class="input-group input-group-lg">
+						<input type="text" class="form-control">
+						<div class="input-group-btn">
+							<a href="" class="btn btn-lg btn-default"><i class="fa fa-calendar"></i></a>
+						</div>
+					</div>
+						
+					</div>
+				</div>
+
+			
+
+			</form>
+
+
+    </div>
+    <div class="modal-footer">
+    	<div class="btn-group btn-group-lg">
+	    	<button type="submit" class="btn btn-success-bd ">Create</button>
+	        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">
+                <a ng-click="selected.item = item">{{ item }}</a>
+            </li>
+        </ul>
+        Selected: <b>{{ selected.item }}</b>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

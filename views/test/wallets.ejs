@@ -1,0 +1,184 @@
+<section class="bck light landing text center">
+    <div class="row">
+        <div class="column_12">
+            <h1>WALLET OF: <%- user %></h1>
+            <hr>
+
+        </div>
+    </div>
+    <div class="row padding-top">
+        <div class="column_12 text left">
+            <% if(error) { %>
+            <h4>ERROR: </h4>
+            <hr>
+            <pre class="bck section theme padding margin-top margin-bottom">
+                <%- error %>
+            </pre>
+            <% } %>
+            
+            <nav class="bck theme text bold margin-bottom " data-tuktuk="menu">
+                <a href="?currencie=doge" <% if(currencie === 'doge') { %> class="active" <% } %>>DOGE</a>
+                <a href="?currencie=anime" <% if(currencie === 'anime') { %> class="active" <% } %>>ANI</a>
+            </nav>
+            
+            <form action="/test/wallets?currencie=<%-currencie%>" method="POST" name="" class="on-right margin-top">
+                <input type="hidden" value="new_adress" name='op'>
+                <button>CHANGE ADDRESS</button>
+            </form>
+            <h3 class="heading">Address for deposit: <%- address %></h3>
+
+            <p>Fund fee: <%- settings.fund %></p>
+
+            <br>
+            
+            <form action="" method="POST" name="" class="on-right margin-top">
+                <input type="hidden" value="refresh_depo" name='op'>
+                <button>REFRESH</button>
+            </form>
+            <h3 class="heading">Current balance: <%- balance %></h3>
+        </div>
+
+    </div>
+</section> 
+
+<section class="bck landing text center">
+    <div class="row">
+        <div class="column_12">
+            <h1>WITHDRAWAL</h1>
+            <hr>
+
+
+
+        </div>
+    </div>
+    <div class="row padding-top">
+        <div class="column_6 ">
+            <h4>Send</h4>
+            <form action="/test/send" method="POST" class="text left">
+                <input type="hidden" name='code' value="<%- code %>">
+
+
+                <label for="address"><%- currencie %> address</label>
+                <input type="text" name="address" value="DGZ8k64Zu8QjRDayyzfWaSTka9Uz2BfKsg">                
+
+
+                <label for="amount">Amount</label>
+                <input type="number" name="amount" value="1">
+
+
+                <button>SEND</button>
+
+
+            </form>
+        </div>
+        <div class="column_6">
+            <h4>Transaction history</h4>
+            <table class="table">
+                <thead>
+                    <th>Row</th>
+                    <th>Transaction ID</th>
+                    <th>Currency</th>
+                    <th>Address</th>
+                    <th>Amount</th>
+                    <th></th>
+                    <th>Fee</th>
+                </thead>
+                <% history.forEach(function (item, id) { %>               
+                    <tr>
+                        <td><%= id %></td>
+                        <td><%= item.id %></td>
+                        <td><%= item.cur %></td>
+                        <td><%= item.address || 'no address' %></td>
+                        <td><%= item.amount %></td>
+                        <td><%= item.type %></td>
+                        <td><%= item.fee || 0 %></td>
+                    </tr>
+                <% }) %>
+
+
+            </table>
+        </div>
+
+    </div>
+</section> 
+
+
+<section class="bck light landing text center">
+    <div class="row">
+        <div class="column_12">
+            <h1>SETTINGS FOR: <%- currencie %></h1>
+            <hr>
+
+        </div>
+    </div>
+    <div class="row padding-top">
+        <div class="column_12 text left">
+            <form action="/test/change_settings" method="POST">
+
+                <input type="hidden" name="code" value="<%- code %>">
+                <label for="fund">Fund fee</label>
+                <input type="text" name="fund" value="<%- settings.fund %>">  
+
+                <br>              
+                <br>              
+
+                <label for="fund">Withdrawal fee</label>
+                <input type="text" name="withdrawal" value="<%- settings.withdrawal %>">
+
+                <br>
+                <br>
+
+                <label>Allow:</label> 
+                <input type="checkbox" name="allow_fund" <% if(settings.allow_fund) {%> checked <% } %>><span>fund</span>
+                <input type="checkbox" name="allow_withdrawal" <% if(settings.allow_withdrawal) {%> checked <% } %>><span>withdrawal</span>
+
+                <br>
+                <br>
+
+                <button>SAVE</button>
+
+
+
+            </form>
+
+        </div>
+
+    </div>
+</section> 
+
+
+<section class="bck landing text center">
+    <div class="row">
+        <div class="column_12">
+            <h1>BILLS</h1>
+            <hr>
+
+        </div>
+    </div>
+    <div class="row padding-top">
+        <div class="column_12">
+            <table class="table">
+                <thead>
+                    <th>RequestID</th>
+                    <th>User</th>
+                    <th>Amount</th>
+                    <th>Order</th>
+                </thead>
+                <% history.forEach(function (item, id) { %>               
+                    <tr>
+                        <td><%= id %></td>
+                        <td><%= item.id %></td>
+                        <td><%= item.cur %></td>
+                        <td><%= item.address || 'no address' %></td>
+                        <td><%= item.amount %></td>
+                        <td><%= item.type %></td>
+                        <td><%= item.fee || 0 %></td>
+                    </tr>
+                <% }) %>
+
+
+            </table>
+        </div>
+
+    </div>
+</section> 

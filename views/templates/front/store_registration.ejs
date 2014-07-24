@@ -1,0 +1,67 @@
+<div id="login_section ">
+    <div class="region padding2x-top">
+        <div class="container">
+            <div class="row">
+                <h1 class="padding2x-top padding-bottom">Create your LessPay Account</h1>
+                <div class="clearfix"></div>
+
+
+                <div class="region white shadow padding0 row    ">
+                    <div class="padding2x">
+                        <div class="col-md-4 padding2x-bottom padding2x-right">
+                            <h3 class="margin-bottom">Create an LessPay Account.</h3>
+                            <hr>
+                            <p>
+                                An LessPay CustomerID is your passcard for everything you do with LessPay: shop in online stores, access LessPay Support, connect your WebShop to LessPay Gateway, and more.
+                            </p>
+
+                            <p>Please read our <a href="">Terms of Use <i class="fa fa-angle-double-right"></i></a></p>
+
+                        </div>
+                        <div class="col-md-8">
+
+
+                            <form class="padding2x" role="form">
+                                <div class="alert alert-danger">
+                                    <i class="fa fa-alert"></i> Oops! Something wrong!
+                                </div>
+
+                                <div class="form-group margin2x-bottom">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="data.email">
+                                </div>
+
+
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" ng-model="genereatePass"> Don't generate my password
+                                    </label>
+                                </div>
+
+                                <div class="form-group margin2x-bottom" ng-if="generatePass">
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+
+                                <hr>
+
+                                <button type="submit" class="btn btn-primary text bold pull-right">Create Customer ID</button>
+                            </form>
+
+
+
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div id="login_section ">
+    <div class="region padding2x-top">
+        <div class="container">
+            <div class="row">
+                <h1 class="padding2x-top padding-bottom">Restore</h1>
+                <div class="clearfix"></div>
+
+
+                <div class="region white shadow padding0 row    ">
+                    <div class="padding2x">
+                        <div class="col-md-4 padding2x-bottom padding2x-right">
+                            <h3 class="margin-bottom">Reset your password.</h3>
+                            <hr>
+                            <p>
+                                You can change or reset the password for your account by providing some information.
+                            </p>
+
+                        </div>
+                        <div class="col-md-8">
+
+
+                            <form class="padding2x margin2x-top" role="form" action ng-submit="restore()" >
+                                <div class="alert alert-danger" ng-show="error" ng-bind-html="error"></div>
+
+                                <div class="form-group" ng-if="data.template==='customer_id'">
+                                    <div class="input-group input-group-lg">
+                                        <input type="text" class="form-control" id="customer_id" autofill name="customer_id"  ng-model="data.customer_id" placeholder="CustomerID" focus-me="true">
+
+                                        <div class="input-group-btn">
+                                            <button  class="btn btn-primary-gr text bold"  type="submit"> Restore</button>
+                                        </div>
+
+                                    </div>
+                                    <div class="help-block">
+                                        <a href ui-sref='restore({ template : "email" })'>Forgot your CustomerID?</a>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" ng-if="data.template==='email'">
+                                    <div class="input-group input-group-lg">
+                                        <input type="email" class="form-control" id="customer_id" autofill name="customer_id"  ng-model="data.email" placeholder="Email" focus-me="true">
+
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary-gr text bold" ng-disabled="!canSend">Restore</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                            </form>
+
+
+
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

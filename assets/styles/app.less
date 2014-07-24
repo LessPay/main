@@ -1,0 +1,106 @@
+.navbar-fixed-top
+.navbar-collapse .navbar-nav.navbar-right:last-child > .dropdown:last-child > a {
+	border-radius: 0;
+}
+
+.navbar-input-group {
+	font-size: 0px; /*removes whitespace between button and input*/
+}
+
+.navbar-input-group input {
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.navbar-input-group .btn {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-left: 0px;
+}
+
+
+.carousel-caption {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carousel .item {
+    width: 100%; /*slider width*/
+    max-height: 600px; /*slider height*/
+}
+.carousel .item img {
+    width: 100%; /*img width*/
+}
+/*add some makeup*/
+.carousel .carousel-control {
+    background: none;
+    border: none;
+    /* top: 50%; */
+}
+/*full width container*/
+@media (max-width: 767px) {
+    .block {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+
+
+
+html, body {
+	height: 100%;
+}
+
+body {	padding-top: 50px; }
+
+#page {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+
+footer, .push {
+	height: 4em;
+}
+
+.input-group.amount-field {
+	width: 100%;
+}
+
+
+.amount-field.input-group .form-control:not(:first-child):not(:last-child) {
+    width: 20%;
+}
+
+.amount-field.input-group .form-control:first-child {
+	width: 80%;
+}
+.amount-field.input-group .form-control:last-child {
+	width: 20%;
+}
+
+
+.color.darkest {
+	background-color: #1B2024;
+}
+
+.color.red {
+	background-color: #FF5346;
+}
+
+
+.color.gray {
+	background-color: #F0F0F0;
+}
+
+
+.color.green {
+	background-color: #81AA21;
+}
+
+
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+#header {
+  color: @light-blue;
+}

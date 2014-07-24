@@ -1,0 +1,77 @@
+<%- partial('partials/header')%>
+
+
+
+<article class="padding scroll">
+		<div class="column_6">
+			<nav class="text bold" data-tuktuk="menu">
+		    	<a href ng-click="current='inv'" ng-class="{ 'active' : current === 'inv' }">Invoices</a>
+		    	<a href ng-click="current='tr'" ng-class="{ 'active' : current === 'tr' }" >Transaction</a>
+			</nav>
+
+			<hr>
+			<div class="bck light padding margin-top" ng-show="current === 'inv'">
+				You haven't created any invoices yet.
+
+			</div>			
+
+			<div class="bck light padding margin-top" ng-show="current === 'tr'">
+				 You haven't made any transactions yet.
+				
+			</div>
+
+
+
+
+		</div>
+		<div class="column_6">
+			
+			<div class="margin-top" id="payment_methods">
+                <div class="margin-bottom">
+                    <h4 class="text book inline bold"><span class="icon credit-card color theme"></span> DEPOSIT MONEY</h4>
+                </div>
+                <hr>
+
+                <div class="inline text center">
+                    <a href="" class="column_1 thumb margin-bottom   ">
+                        <img src="/img/1401077020_Bitcoin.svg" alt="" width="100%">
+                        
+                        <br>
+                        Bitcoin
+
+                    </a>
+                    <a href="" class="column_1 thumb margin-bottom   ">
+                        <img src="/img/1401076697_Western_union1.svg" alt="" width="100%">
+                        <br>
+                        Western Union
+                        
+                    
+                    </a>
+                    <a href="" class="column_1 thumb margin-bottom   ">
+                        <img src="/img/1401077222_lifebuoy.png" alt="" width="100%">
+                        <br>
+
+                        Less Pay
+
+                    </a>
+                    <a href="" class="column_1 thumb margin-bottom ">
+                        <img src="/img/140417_681.png" alt="" width="100%">
+                        <br>
+
+                        Perfect Money
+
+                    </a>
+                </div>
+
+            </div>
+
+
+
+		</div>
+	
+
+</article>
+
+<footer class="bck light">
+
+</footer>
